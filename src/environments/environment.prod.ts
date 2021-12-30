@@ -23,7 +23,7 @@ export const environment = {
    * Dominios (dominio.com) a los que se enviará el token en el header de la petición.
    * Utilizar solo en caso que el dominio sea distinto del actual, ya que es allowed por defecto.
    */
-  allowedDomains: ["https://cgo8ch5rv8.execute-api.us-west-2.amazonaws.com/dev/"],
+  allowedDomains: [],
   /**
    * Rutas en las que no se tendrá en cuenta el envío del token.
    * Pueden ser del mismo dominio.

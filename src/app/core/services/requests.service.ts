@@ -16,18 +16,6 @@ export class RequestsService {
   async makeRequest(_domain: string = "", _url: { value: string; method: string; contentType: string; }, _params: any = undefined, _headers: any = undefined): Promise<BasicResponse> {
     if (_url.value) {
       _url.method = _url.method.toUpperCase()
-      const allowedDomain = environment.allowedDomains.find(dom => {
-        return _domain.includes(dom) || dom.includes(_domain)
-      })
-      if (allowedDomain) {
-        if (_headers) {
-          _headers["Authorization"] = "Bearer " + getToken()
-        } else {
-          _headers = {
-            "Authorization": "Bearer " + getToken()
-          }
-        }
-      }
       if (isIn(_url.method, [RequestMethod.PATCH, RequestMethod.POST, RequestMethod.PUT])) {
         if (_url.contentType == "application/x-www-form-urlencoded") {
           return await this.postLikeFormUrlEncoded(`${_domain}${_url.value}`, _params, _headers, RequestMethod[_url.method])
@@ -48,18 +36,6 @@ export class RequestsService {
     try {
       if (_url) {
         let paramsUrl = "";
-        const allowedDomain = environment.allowedDomains.find(dom => {
-          return _url.includes(dom) || dom.includes(_url)
-        })
-        if (allowedDomain) {
-          if (_headers) {
-            _headers["Authorization"] = "Bearer " + getToken()
-          } else {
-            _headers = {
-              "Authorization": "Bearer " + getToken()
-            }
-          }
-        }
         _headers = new HttpHeaders(_headers)
         // Recorremos los parametros para convertirlos a parametros de url
         for (const key in _params) {
@@ -83,18 +59,6 @@ export class RequestsService {
   async delete(_url: string, _params: any = {}, _headers: any = undefined): Promise<BasicResponse> {
     try {
       if (_url) {
-        const allowedDomain = environment.allowedDomains.find(dom => {
-          return _url.includes(dom) || dom.includes(_url)
-        })
-        if (allowedDomain) {
-          if (_headers) {
-            _headers["Authorization"] = "Bearer " + getToken()
-          } else {
-            _headers = {
-              "Authorization": "Bearer " + getToken()
-            }
-          }
-        }
         let paramsUrl = "";
         _headers = new HttpHeaders(_headers)
         // Recorremos los parametros para convertirlos a parametros de url
@@ -119,18 +83,6 @@ export class RequestsService {
   async postLikeFormUrlEncoded(_url: string, _params: any, _headers: any = undefined, method: RequestMethod.POST | RequestMethod.PATCH | RequestMethod.PUT = RequestMethod.POST): Promise<BasicResponse> {
     try {
       if (_url) {
-        const allowedDomain = environment.allowedDomains.find(dom => {
-          return _url.includes(dom) || dom.includes(_url)
-        })
-        if (allowedDomain) {
-          if (_headers) {
-            _headers["Authorization"] = "Bearer " + getToken()
-          } else {
-            _headers = {
-              "Authorization": "Bearer " + getToken()
-            }
-          }
-        }
         const paramsUrlEncoded = new URLSearchParams();
         if (_headers) {
           _headers["Content-Type"] = "application/x-www-form-urlencoded"
@@ -163,18 +115,6 @@ export class RequestsService {
   async postLikeJSON(_url: string, _params: any, _headers: any = undefined, method: RequestMethod.POST | RequestMethod.PATCH | RequestMethod.PUT = RequestMethod.POST): Promise<BasicResponse> {
     try {
       if (_url) {
-        const allowedDomain = environment.allowedDomains.find(dom => {
-          return _url.includes(dom) || dom.includes(_url)
-        })
-        if (allowedDomain) {
-          if (_headers) {
-            _headers["Authorization"] = "Bearer " + getToken()
-          } else {
-            _headers = {
-              "Authorization": "Bearer " + getToken()
-            }
-          }
-        }
         if (_headers) {
           _headers["Content-Type"] = "application/json"
         } else {
