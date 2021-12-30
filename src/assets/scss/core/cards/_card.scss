@@ -1,0 +1,26 @@
+//
+// Card
+//
+.card {
+  border: none;
+  box-shadow: var(--shadow);
+  // box-shadow: $shadow-fb;
+  border-radius: var(--button-radius);
+
+  .card-header,
+  .card-footer {
+    border-radius: var(--button-radius);
+  }
+
+  .card-footer {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.card-translucent {
+  background-color: rgba(18, 91, 152, 0.08);
+}

@@ -1,0 +1,212 @@
+:root {
+  --shadow: 0 0 0.5rem 0 rgb(136 152 170 / 15%);
+  --shadow-lg: 0 0 2rem 0 rgb(136 152 170 / 15%);
+}
+
+snack-bar-container {
+  height: auto;
+  font-weight: var(--font-medium);
+  border-radius: var(--button-radius) !important;
+  background-color: white !important;
+  box-shadow: var(--shadow-lg) !important;
+
+  &.dangerSnackbar {
+    color: var(--danger);
+  }
+
+  &.successSnackbar {
+    color: var(--success);
+  }
+
+  &.warningSnackbar {
+    color: var(--warning);
+  }
+
+  &.primarySnackbar {
+    color: var(--primary);
+  }
+
+  &.secondarySnackbar {
+    color: var(--secondary);
+  }
+
+  &.darkSnackbar {
+    background-color: var(--dark) !important;
+    color: white;
+  }
+
+  &.infoSnackbar {
+    color: var(--info);
+  }
+
+  &.whiteSnackbar {
+    color: var(--dark);
+  }
+
+  .mat-simple-snackbar,
+  .mat-simple-snackbar-message {
+    white-space: normal;
+  }
+}
+
+.gap-0 {
+  gap: 0.2rem;
+}
+
+.gap {
+  gap: 0.5rem;
+}
+
+.gap-1 {
+  gap: 0.7rem;
+}
+
+.gap-2 {
+  gap: 1rem;
+}
+
+.gap-3 {
+  gap: 1.5rem;
+}
+
+.gap-4 {
+  gap: 2rem;
+}
+
+.gap-5 {
+  gap: 2.5rem;
+}
+
+::-webkit-scrollbar {
+  /* Tamaño del scroll en vertical */
+  width: 6px;
+  /* Tamaño del scroll en horizontal */
+  height: 6px;
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+::-webkit-scrollbar-thumb {
+  background: rgb(172, 172, 172);
+  border-radius: 4px;
+
+  &:hover {
+    background: rgba(143, 143, 143, 0.5);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+/* Cambiamos el fondo cuando esté en active */
+::-webkit-scrollbar-thumb:active {
+  background-color: rgba(114, 114, 114, 0.5);
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del track */
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.aurora-spinner-container {
+  position: fixed;
+  z-index: 999998;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: white, $alpha: 0.3);
+  text-align: center;
+
+  .background {
+    position: absolute;
+    z-index: 999999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 150px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    background-color: rgba($color: white, $alpha: 1);
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+
+    img {
+      border-radius: 100px;
+      // padding: -40px;
+      object-fit: cover;
+      // transform: scale(1.3);
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
+
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  border-radius: var(--button-radius) !important;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-subscript-wrapper {
+  margin: 0 !important;
+}
+
+.mat-form-field-appearance-fill {
+  .mat-form-field-wrapper {
+    .mat-form-field-underline {
+      display: none !important;
+      // opacity: 0 !important;
+    }
+  }
+}
+
+.shadow-sm {
+  box-shadow: $shadow-fb !important;
+}
+.row {
+  margin: 0 !important;
+}
+mat-dialog-container {
+  background-color: $body-bg !important;
+}
+mat-icon {
+  width: fit-content !important;
+  height: fit-content !important;
+}
+
+.unselectable {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container {
+  @media screen and (max-width: 400px) {
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+}
+
+*form {
+  &.card {
+    .card-body {
+      @media screen and (max-width: 400px) {
+        padding: 1rem 0 0 0;
+      }
+    }
+  }
+}

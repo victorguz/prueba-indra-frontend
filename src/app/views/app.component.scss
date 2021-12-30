@@ -1,0 +1,25 @@
+.aurora-spinner-container {
+  position: absolute;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: white, $alpha: 0.05);
+
+  .background {
+    position: absolute;
+    z-index: 999999;
+    top: 20px;
+    right: 20px;
+    background-color: rgba($color: white, $alpha: 1);
+    border-radius: 100px;
+    padding: 2px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    // mat-spinner {
+    //   width: 30px !important;
+    //   height: 30px !important;
+    // }
+  }
+}
