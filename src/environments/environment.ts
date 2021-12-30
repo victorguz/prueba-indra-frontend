@@ -14,7 +14,7 @@ export const environment = {
 
   adminRoute: "admin",
   authRoute: "auth",
-  domain: "https://cgo8ch5rv8.execute-api.us-west-2.amazonaws.com/",
+  domain: "https://cgo8ch5rv8.execute-api.us-west-2.amazonaws.com/dev/",
   encryptLocalStorage: false,
   //urls basicas necesarias para el buen funcionamiento del framework
   apis: {

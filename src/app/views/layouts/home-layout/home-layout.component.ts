@@ -46,6 +46,7 @@ export class HomeLayoutComponent implements OnInit {
     hideSpinner()
     if (result.success) {
       this.multiplicaciones = result.data
+      console.log(this.multiplicaciones)
     } else {
       this.helpers.notifications.errorMessage(result.message)
     }
@@ -55,7 +56,7 @@ export class HomeLayoutComponent implements OnInit {
   async create() {
     console.log(this.form.value)
     if (this.form.valid) {
-      if (isInt(this.form.get("numero1")) && isInt(this.form.get("numero1"))) {
+      if (isInt(this.form.value.numero1) && isInt(this.form.value.numero2)) {
         showSpinner("Calculando resultado en el servidor")
         const result = await this.testsService.create(this.form.value)
         hideSpinner()
@@ -66,11 +67,18 @@ export class HomeLayoutComponent implements OnInit {
           this.helpers.notifications.errorMessage(result.message)
         }
       } else {
-        this.helpers.notifications.errorMessage("Los números deben ser enteros, sin notación científica.")
+        this.helpers.notifications.errorMessage("Los números deben ser enteros, no se permiten letras")
       }
     } else {
       this.helpers.notifications.errorMessage("Por favor digite todos los campos")
     }
+  }
+
+  showResult(selected: any[]) {
+    this.helpers.notifications.successDialog(`Detalles de la multiplicación`,
+      `<strong>Valor 1:</strong> ${BigInt(selected[0].numero1).toString()}
+      <br><strong>Valor 2:</strong> ${BigInt(selected[0].numero2).toString()}
+      <br><strong>Resultado:</strong> ${BigInt(selected[0].resultado).toString()}`, "Ok", undefined, "fit-content", "fit-content")
   }
 
   print(value) {

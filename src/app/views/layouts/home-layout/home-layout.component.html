@@ -40,8 +40,8 @@
     </div>
   </form>
 
-  <aurora-table class="mt-3" [title]="'Historial de multiplicaciones'" [data]="multiplicaciones"
-    [multipleSelection]="false">
+  <aurora-table class="mt-3" [title]="'Historial de multiplicaciones'" description="Click en para ver detalles"
+    [data]="multiplicaciones" (clickRow)="showResult($event)" [multipleSelection]="false">
   </aurora-table>
 
 </div>
