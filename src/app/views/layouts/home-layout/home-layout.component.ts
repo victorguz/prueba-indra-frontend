@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { hideSpinner, isPassword, showSpinner } from 'src/app/core/services/functions.service';
 import { HelpersService } from 'src/app/core/services/helpers.service';
-import { arrayNotEmpty, isNotEmptyObject, isString } from 'class-validator';
+import { arrayNotEmpty, isInt, isNotEmptyObject, isString } from 'class-validator';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { TestsService } from 'src/app/services/tests.service';
@@ -55,19 +55,24 @@ export class HomeLayoutComponent implements OnInit {
   async create() {
     console.log(this.form.value)
     if (this.form.valid) {
-      showSpinner("Calculando resultado en el servidor")
-      const result = await this.testsService.create(this.form.value)
-      hideSpinner()
-      if (result.success) {
-        await this.getAll()
-        this.helpers.notifications.successMessage(result.message)
+      if (isInt(this.form.get("numero1")) && isInt(this.form.get("numero1"))) {
+        showSpinner("Calculando resultado en el servidor")
+        const result = await this.testsService.create(this.form.value)
+        hideSpinner()
+        if (result.success) {
+          await this.getAll()
+          this.helpers.notifications.successMessage(result.message)
+        } else {
+          this.helpers.notifications.errorMessage(result.message)
+        }
       } else {
-        this.helpers.notifications.errorMessage(result.message)
+        this.helpers.notifications.errorMessage("Los números deben ser enteros, sin notación científica.")
       }
     } else {
       this.helpers.notifications.errorMessage("Por favor digite todos los campos")
     }
   }
+
   print(value) {
     return JSON.stringify(value)
   }
